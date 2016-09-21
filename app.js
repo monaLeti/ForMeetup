@@ -61,13 +61,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'stretch',
     backgroundColor: '#F5FCFF',
   },
   list: {
+    flex: 1,
+    marginTop:60,
+    backgroundColor: '#F00'
   },
   cell: {
-    backgroundColor:''
+    backgroundColor:'#F5DCFF'
   },
   title: {
   },
