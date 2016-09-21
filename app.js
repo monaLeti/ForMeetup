@@ -11,7 +11,8 @@ import {
   Text,
   View,
   ListView,
-  Image
+  Image,
+  TouchableHighlight
 } from 'react-native';
 
 class App extends Component {
@@ -51,10 +52,10 @@ class App extends Component {
                 <Text style={styles.title}>{rowData.name}</Text>
                 <Text style={styles.venue}>{rowData.venue.address_1}</Text>
               </View>
-              <View style={styles.arrowNextView}>
+              <TouchableHighlight style={styles.arrowNextView}>
                 <Image source={require('./resources/circle-next-arrow.png')}
-                  style={{width: 30, height: 30}}/>
-              </View>
+                  style={{width: 25, height: 25}}/>
+              </TouchableHighlight>
             </View>
           )
         }}/>
@@ -92,7 +93,8 @@ const styles = StyleSheet.create({
   },
   arrowNextView: {
     flex:1,
-    paddingTop:30
+    flexDirection:'row',
+    alignItems:'center'
   },
   venue: {
     paddingLeft:20,
