@@ -22,7 +22,7 @@ class App extends Component {
     };
   }
   componentDidMount() {
-    fetch('https://api.meetup.com/react-native-cph/events?member_id=self&key=5704b84b803c7919505562105f1536').then(response => response.json()).then(
+    fetch('https://api.meetup.com/self/events?&sign=true&photo-host=public&key=5704b84b803c7919505562105f1536').then(response => response.json()).then(
       response => {
         console.log(response);
 
@@ -66,15 +66,24 @@ const styles = StyleSheet.create({
   },
   list: {
     flex: 1,
-    marginTop:60,
-    backgroundColor: '#F00'
+    marginTop:60
   },
   cell: {
-    backgroundColor:'#F5DCFF'
+    backgroundColor:'#CEE3F6',
+    borderStyle:'solid',
+    borderTopColor:'black',
+    borderTopWidth: 1,
   },
   title: {
+    padding:20,
+    paddingBottom:0,
+    color: '#585858'
   },
   venue: {
+    paddingLeft:20,
+    paddingBottom:20,
+    fontSize:12,
+    color: '#848484'
   },
 });
 
