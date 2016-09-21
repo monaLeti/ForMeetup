@@ -10,7 +10,8 @@ import {
   StyleSheet,
   Text,
   View,
-  ListView
+  ListView,
+  Image
 } from 'react-native';
 
 class App extends Component {
@@ -46,8 +47,14 @@ class App extends Component {
         renderRow={(rowData) => {
           return (
             <View style={styles.cell}>
-              <Text style={styles.title}>{rowData.name}</Text>
-              <Text style={styles.venue}>{rowData.venue.address_1}</Text>
+              <View style={styles.eventInfo}>
+                <Text style={styles.title}>{rowData.name}</Text>
+                <Text style={styles.venue}>{rowData.venue.address_1}</Text>
+              </View>
+              <View style={styles.arrowNextView}>
+                <Image source={require('./resources/circle-next-arrow.png')}
+                  style={{width: 30, height: 30}}/>
+              </View>
             </View>
           )
         }}/>
@@ -69,7 +76,8 @@ const styles = StyleSheet.create({
     marginTop:60
   },
   cell: {
-    backgroundColor:'#CEE3F6',
+    flexDirection:'row',
+    backgroundColor:'#F5F7FE',
     borderStyle:'solid',
     borderTopColor:'black',
     borderTopWidth: 1,
@@ -79,12 +87,19 @@ const styles = StyleSheet.create({
     paddingBottom:0,
     color: '#585858'
   },
+  eventInfo: {
+    flex:5
+  },
+  arrowNextView: {
+    flex:1,
+    paddingTop:30
+  },
   venue: {
     paddingLeft:20,
     paddingBottom:20,
     fontSize:12,
     color: '#848484'
-  },
+  }
 });
 
 export default App;
