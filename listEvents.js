@@ -15,7 +15,7 @@ import {
   TouchableHighlight
 } from 'react-native';
 
-class App extends Component {
+class ListEvents extends Component {
   constructor(){
     super()
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
@@ -24,7 +24,7 @@ class App extends Component {
     };
   }
   componentDidMount() {
-    fetch('https://api.meetup.com/self/events?&sign=true&photo-host=public&key=5704b84b803c7919505562105f1536').then(response => response.json()).then(
+    fetch('https://api.meetup.com/self/events?&sign=true&photo-host=public&key=xxx').then(response => response.json()).then(
       response => {
         console.log(response);
 
@@ -36,6 +36,14 @@ class App extends Component {
         console.log('error', error);
       }
     )
+  }
+
+  navigateToInfo(event) {
+      console.log(event);
+      this.props.push({
+        key: 'info',
+        event,
+      })
   }
 
   render() {
@@ -52,7 +60,7 @@ class App extends Component {
                 <Text style={styles.title}>{rowData.name}</Text>
                 <Text style={styles.venue}>{rowData.venue.address_1}</Text>
               </View>
-              <TouchableHighlight style={styles.arrowNextView}>
+              <TouchableHighlight style={styles.arrowNextView} onPress={() => { this.navigateToInfo(rowData); }}>
                 <Image source={require('./resources/circle-next-arrow.png')}
                   style={{width: 25, height: 25}}/>
               </TouchableHighlight>
@@ -73,8 +81,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
   list: {
-    flex: 1,
-    marginTop:60
+    flex: 1
   },
   cell: {
     flexDirection:'row',
@@ -104,4 +111,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default App;
+export default ListEvents;

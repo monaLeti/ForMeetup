@@ -11,6 +11,6 @@ import {
   Text,
   View
 } from 'react-native';
-import App from './app'
+import Navigator from './Navigator'
 
-AppRegistry.registerComponent('ForMeetup', () => App);
+AppRegistry.registerComponent('ForMeetup', () => Navigator);

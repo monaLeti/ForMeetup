@@ -12,8 +12,9 @@ const {
   StateUtils,
 } = NavigationExperimental;
 
-import App from './app';
+import ListEvents from './listEvents';
 import Test from './test';
+import PageTwo from './pagetwo';
 
 const styles = StyleSheet.create({
   backButton: {
@@ -68,7 +69,7 @@ class Navigator extends Component {
 
   renderLeftComponent() {
     if (this.state.navigationState.index === 0) {
-      // return null;
+      return null;
     }
 
     return (
@@ -82,6 +83,7 @@ class Navigator extends Component {
 
   renderScene(sceneProps) {
     const navigateProps = {
+      ...sceneProps.scene.route,
       push: this.handleOnPush,
       pop: this.handleOnPop,
     };
@@ -90,13 +92,17 @@ class Navigator extends Component {
       case 'info':
         return <Test {...navigateProps} />;
 
+      case 'pagetwo':
+        return <PageTwo {...navigateProps} />;
+
       case 'list':
       default:
-        return <App {...navigateProps} />;
+        return <ListEvents {...navigateProps} />;
     }
   }
 
   renderHeader(sceneProps) {
+
     return (
       <NavigationExperimental.Header {...sceneProps} renderLeftComponent={this.renderLeftComponent} />
     );
